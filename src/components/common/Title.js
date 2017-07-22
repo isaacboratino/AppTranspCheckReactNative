@@ -14,9 +14,8 @@ const styles = {
   textStyle: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginHorizontal: 16,
-    marginTop: 10,
-    color: Colors.title.text
+    color: Colors.title.text,
+    marginBottom: 10
   }
 };
 

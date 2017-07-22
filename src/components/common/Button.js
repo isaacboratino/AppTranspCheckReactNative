@@ -30,9 +30,7 @@ const styles = {
     borderRadius: 5,
     borderWidth: 1,
     borderColor: Colors.button.border,
-    marginLeft: 5,
-    marginRight: 5,
-    marginVertical: 8
+    marginTop: 16,
   }
 };
 

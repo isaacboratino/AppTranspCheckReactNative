@@ -22,7 +22,9 @@ const styles = {
     shadowRadius: 2,
     elevation: 3,
     marginHorizontal: 16,
-    marginTop: 20
+    marginVertical: 16,
+    marginTop: 20,
+    padding: 16
   }
 };
 

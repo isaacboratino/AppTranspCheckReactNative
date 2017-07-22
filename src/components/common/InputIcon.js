@@ -2,12 +2,15 @@ import React from 'react';
 import { TextInput, View, Text, Image } from 'react-native';
 import { Colors } from '../../configs';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const InputIcon = ({ label, value, onChangeText, placeholder, secureTextEntry, icon }) => {
 
-  const {inputStyle, labelStyle, containerStyle, textContainerStyle} = styles;
+  const {inputStyle, labelStyle, containerStyle, textContainerStyle, imageStyle} = styles;
 
   return (
     <View style={containerStyle}>
+
+      <Image source={icon} style={imageStyle} resizeMode='contain'></Image>
+
       <View style={textContainerStyle}>
         <Text style={labelStyle}>{label}</Text>
         <TextInput
@@ -19,6 +22,7 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
           onChangeText={onChangeText}
         />
       </View>
+
     </View>
   );
 };
@@ -49,7 +53,11 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'flex-start',
     flex: 1,
+  },
+  imageStyle: {
+    width:40,
+    height:40
   }
 };
 
-export { Input };
+export { InputIcon };

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Input, Card, CardSection, Button, Title} from './common';
+import {Input, InputIcon, Card, CardSection, Button, Title} from './common';
 
 class LoginContainer extends Component {
+
   state = { user: '', password: '', error: '', loading: false };
 
   render() {
@@ -12,7 +13,8 @@ class LoginContainer extends Component {
         </CardSection>
 
         <CardSection>
-          <Input
+          <InputIcon
+            icon={require('../../images/icon_maps_pointer.png')}
             placeholder=''
             label='Usuario'
             value={this.state.user}
