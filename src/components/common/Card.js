@@ -21,9 +21,6 @@ const styles = {
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 3,
-    marginHorizontal: 16,
-    marginVertical: 16,
-    marginTop: 20,
     padding: 16
   }
 };

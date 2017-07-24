@@ -56,7 +56,9 @@ const styles = {
   },
   imageStyle: {
     width:40,
-    height:40
+    height:40,
+    margin: 10,
+    alignSelf: 'center',
   }
 };
 

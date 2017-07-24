@@ -14,7 +14,7 @@ class LoginContainer extends Component {
 
         <CardSection>
           <InputIcon
-            icon={require('../../images/icon_maps_pointer.png')}
+            icon={require('../../images/icon_person.png')}
             placeholder=''
             label='Usuario'
             value={this.state.user}
@@ -23,7 +23,8 @@ class LoginContainer extends Component {
         </CardSection>
 
         <CardSection>
-            <Input
+          <InputIcon
+            icon={require('../../images/icon_key.png')}
               secureTextEntry
               placeholder=""
               label="Senha"
@@ -35,6 +36,7 @@ class LoginContainer extends Component {
         <CardSection>
           <Button>ENTRAR</Button>
         </CardSection>
+
       </Card>
     );
   }
