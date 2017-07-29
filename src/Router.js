@@ -5,16 +5,14 @@ import TransportContainer from './containers/TransportContainer';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 0 }} >
+    <Router>
       <Scene>
         <Scene key='login'>
-          <Scene key='container'
-                 component={LoginContainer}
-                 style={{ paddingTop: 0 }} />
+          <Scene key='container' component={LoginContainer} hideNavBar />
         </Scene>
 
-        <Scene key="transport">
-          <Scene key="container" component={TransportContainer} />
+        <Scene key='transport'>
+          <Scene key='container' component={TransportContainer} hideNavBar />
         </Scene>
 
       </Scene>

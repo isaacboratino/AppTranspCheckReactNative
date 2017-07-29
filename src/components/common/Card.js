@@ -21,7 +21,8 @@ const styles = {
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 3,
-    padding: 16
+    padding: 16,
+    backgroundColor: '#FFFFFF'
   }
 };
 

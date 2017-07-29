@@ -15,6 +15,8 @@ export const loginUser = ({ user, password }) => {
     }
     else
       loginUserFail(dispatch);
+
+      Actions.transport();
   };
 };
 

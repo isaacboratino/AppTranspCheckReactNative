@@ -37,44 +37,44 @@ class LoginContainer extends Component {
         <Header headerText="Transp Check" />
         <View style={styles.containerStyle}>
 
-      <Card>
-        <CardSection>
-          <Title>Login</Title>
-        </CardSection>
+        <Card>
+          <CardSection>
+            <Title>Login</Title>
+          </CardSection>
 
-        <CardSection>
-          <InputIcon
-            icon={require('../../images/icon_person.png')}
-            placeholder=''
-            label='Usuario'
-            value={this.props.user}
-            onChangeText={this.onUserChangeText.bind(this)}
-          />
-        </CardSection>
-
-        <CardSection>
-          <InputIcon
-            icon={require('../../images/icon_key.png')}
-              secureTextEntry
-              placeholder=""
-              label="Senha"
-              value={this.props.password}
-              onChangeText={this.onPasswordChangeText.bind(this)}
+          <CardSection>
+            <InputIcon
+              icon={require('../../images/icon_person.png')}
+              placeholder=''
+              label='Usuario'
+              value={this.props.user}
+              onChangeText={this.onUserChangeText.bind(this)}
             />
-        </CardSection>
+          </CardSection>
 
-        <Title>
-          {this.props.error}
-        </Title>
+          <CardSection>
+            <InputIcon
+              icon={require('../../images/icon_key.png')}
+                secureTextEntry
+                placeholder=""
+                label="Senha"
+                value={this.props.password}
+                onChangeText={this.onPasswordChangeText.bind(this)}
+              />
+          </CardSection>
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
+          <Title>
+            {this.props.error}
+          </Title>
 
-      </Card>
+          <CardSection>
+            {this.renderButton()}
+          </CardSection>
 
+        </Card>
+
+      </View>
     </View>
-  </View>
     );
   }
 }
