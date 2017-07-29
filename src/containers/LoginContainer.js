@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from './../actions';
-import {Input, InputIcon, Card, CardSection, Button, Title, Spinner} from './../components/common';
+import {View} from 'react-native';
+import {Input, InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components/common';
 
 class LoginContainer extends Component {
 
@@ -31,6 +32,11 @@ class LoginContainer extends Component {
   render() {
 
     return (
+
+      <View>
+        <Header headerText="Transp Check" />
+        <View style={styles.containerStyle}>
+
       <Card>
         <CardSection>
           <Title>Login</Title>
@@ -66,9 +72,20 @@ class LoginContainer extends Component {
         </CardSection>
 
       </Card>
+
+    </View>
+  </View>
     );
   }
 }
+
+const styles = {
+  containerStyle: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    paddingTop: 20,
+  }
+};
 
 const mapStateToProps = ({ loginState }) => {
   const { user, password, error, loading, logado } = loginState;

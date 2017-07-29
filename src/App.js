@@ -15,23 +15,12 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <View>
-          <Header headerText="Transp Check" />
-          <View style={styles.containerStyle}>
-            <Router />
-          </View>
-        </View>
+        <Router />
       </Provider>
     );
   }
 }
 
-const styles = {
-  containerStyle: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    paddingTop: 20,
-  }
-}
+
 
 export default App;
