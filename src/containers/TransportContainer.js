@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Input, InputIcon, Card, CardSection, Button, Title} from './common';
+import {Input, InputIcon, Card, CardSection, Button, Title} from './../components/common';
 
 class TransportContainer extends Component {
 
@@ -9,7 +9,7 @@ class TransportContainer extends Component {
     return (
       <Card>
         <CardSection>
-          <Title>Transporte</Title>
+          <Title>Transporte huhuhu</Title>
         </CardSection>
 
         <CardSection>

@@ -1,19 +1,27 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
+import {Provider} from 'react-redux';
 import {Header} from './components/common';
-import LoginContainer from './components/LoginContainer';
-import TransportContainer from './components/TransportContainer';
+import StoreConfig from './configs/StoreConfig';
+import LoginContainer from './containers/LoginContainer';
+import TransportContainer from './containers/TransportContainer';
+import Router from './Router';
 
 class App extends Component {
 
   render() {
+
+    const store = StoreConfig();
+
     return (
-      <View>
-        <Header headerText="Transp Check" />
-        <View style={styles.containerStyle}>
-          <TransportContainer />
+      <Provider store={store}>
+        <View>
+          <Header headerText="Transp Check" />
+          <View style={styles.containerStyle}>
+            <Router />
+          </View>
         </View>
-      </View>
+      </Provider>
     );
   }
 }
