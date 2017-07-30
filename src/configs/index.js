@@ -1,1 +1,2 @@
-export * from './Colors';
+export * from './ColorsConfig';
+export * from './URLsConfig';

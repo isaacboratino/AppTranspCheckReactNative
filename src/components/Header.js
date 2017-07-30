@@ -1,7 +1,7 @@
 // Import libraries for making a component
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import { Colors } from '../../configs';
+import { ColorsConfig } from './../configs';
 
 // Make a component
 const Header = (props) => {
@@ -9,7 +9,7 @@ const Header = (props) => {
 
   return (
     <View style={viewStyle}>
-      <Image source={require('../../../images/header_logo.png')}
+      <Image source={require('../../images/header_logo.png')}
              style={imageStyle}
              resizeMode='contain'></Image>
       <Text style={textStyle}>{props.headerText}</Text>
@@ -19,12 +19,12 @@ const Header = (props) => {
 
 const styles = {
   viewStyle: {
-    backgroundColor: Colors.header.background,
+    backgroundColor: ColorsConfig.header.background,
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: 45,
     marginTop: 20,
-    shadowColor: Colors.header.shadow,
+    shadowColor: ColorsConfig.header.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
@@ -34,7 +34,7 @@ const styles = {
   textStyle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.header.title
+    color: ColorsConfig.header.title
   },
   imageStyle: {
     marginHorizontal: 10,

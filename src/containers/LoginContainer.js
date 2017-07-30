@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from './../actions';
 import {View} from 'react-native';
-import {Input, InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components/common';
+import {Input, InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components';
 
 class LoginContainer extends Component {
 

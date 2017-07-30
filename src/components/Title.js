@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text} from 'react-native';
-import { Colors } from '../../configs';
+import { ColorsConfig } from './../configs';
 
 const Title = (props) => {
   return (
@@ -14,7 +14,7 @@ const styles = {
   textStyle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: Colors.title.text,
+    color: ColorsConfig.title.text,
     marginBottom: 10
   }
 };

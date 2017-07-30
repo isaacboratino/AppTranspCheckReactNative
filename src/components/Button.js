@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { Colors } from '../../configs';
+import { ColorsConfig } from './../configs';
 
 const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
@@ -17,7 +17,7 @@ const Button = ({ onPress, children }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: Colors.button.text,
+    color: ColorsConfig.button.text,
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
@@ -26,10 +26,10 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: Colors.button.background,
+    backgroundColor: ColorsConfig.button.background,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: Colors.button.border,
+    borderColor: ColorsConfig.button.border,
     marginTop: 16,
   }
 };

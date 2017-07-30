@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Colors } from '../../configs';
+import { ColorsConfig } from './../configs';
 
 const CardSection = (props) => {
   return (
@@ -13,8 +13,8 @@ const CardSection = (props) => {
 const styles = {
   containerStyle: {
     borderRadius: 8,
-    backgroundColor: Colors.cardSection.background,
-    borderColor: Colors.cardSection.border,
+    backgroundColor: ColorsConfig.cardSection.background,
+    borderColor: ColorsConfig.cardSection.border,
     borderBottomWidth: 0,
     padding: 5,
     justifyContent: 'flex-start',

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import {Input, InputIcon, Card, CardSection, Button, Title, Header} from './../components/common';
+import {Input, InputIcon, Card, CardSection, Button, Title, Header} from './../components';
 
 class TransportContainer extends Component {
 

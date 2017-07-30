@@ -1,12 +1,16 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import * as ActionTypes from './ActionTypes';
+import { URLsConfig } from '../configs';
+import { ConnectAPI } from '../concerns';
 
 export const loginUser = ({ user, password }) => {
 
   return (dispatch) => {
 
     dispatch({ type: ActionTypes.LOGIN_USER });
+
+    ConnectAPI.post(URLsConfig.auth, {user:{user:user, password:password}});
 
     console.log(user == 'admin' && password == 'admin');
 
