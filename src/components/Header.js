@@ -1,6 +1,6 @@
 // Import libraries for making a component
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import ReactNative, { Text, View, Image } from 'react-native';
 import { ColorsConfig } from './../configs';
 
 // Make a component
@@ -23,7 +23,7 @@ const styles = {
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: 45,
-    marginTop: 20,
+    marginTop: ReactNative.Platform.OS === 'ios' ? 20 : 0,
     shadowColor: ColorsConfig.header.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,

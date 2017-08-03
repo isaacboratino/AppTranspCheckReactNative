@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text, Image } from 'react-native';
+import ReactNative, { TextInput, View, Text, Image } from 'react-native';
 import { ColorsConfig } from './../configs';
 
 const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
@@ -29,13 +29,13 @@ const styles = {
     fontSize: 18,
     lineHeight: 23,
     borderColor: ColorsConfig.input.border,
-    borderBottomWidth: 1,
+    borderBottomWidth: ReactNative.Platform.OS === 'ios' ? 1 : 0,
     alignSelf: 'stretch',
     flex: 1,
   },
   labelStyle: {
     color: ColorsConfig.input.label,
-    fontSize: 14,
+    fontSize: ReactNative.Platform.OS === 'ios' ? 14 : 12,
     flex: 1,
   },
   textContainerStyle: {
@@ -45,7 +45,7 @@ const styles = {
     flex: 1,
   },
   containerStyle: {
-    height: 40,
+    
     flexDirection: 'row',
     alignItems: 'flex-start',
     flex: 1,

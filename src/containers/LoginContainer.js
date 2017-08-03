@@ -84,6 +84,7 @@ const styles = {
     paddingHorizontal: 16,
     paddingVertical: 16,
     paddingTop: 20,
+    
   }
 };
 

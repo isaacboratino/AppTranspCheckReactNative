@@ -1,0 +1,8 @@
+1. Executar no diretorio do projeto:
+react-native bundle --dev false --platform android --entry-file index.android.js --bundle-output ./android/app/build/intermediates/assets/debug/index.android.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug
+
+2. cd android
+./gradlew assembleDebug
+
+3. Local do arquivo
+android/app/build/outputs/apk/debug-android.apk

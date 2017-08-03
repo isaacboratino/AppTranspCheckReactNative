@@ -1,6 +1,22 @@
-export const ConnectAPI = () => {
+export default class ConnectAPI {
 
-  post = function(url, paramJson) {
+  post = (url, paramJson) => {
+
+    let data = {
+      method: 'POST',
+      body: JSON.stringify({
+        paramJson
+      }),
+      headers: {
+        'Accept':       'application/json',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    return fetch(url, data)
+            .then(response => response.json())  // promise
+            .then(json => dispatch(json))
+
     fetch(url, {
         method: 'POST',
         headers: {
@@ -16,7 +32,7 @@ export const ConnectAPI = () => {
       .catch(e => e)
   }
 
-  checkStatus = function(response) {
+  checkStatus = (response) => {
     if (response.status >= 200 && response.status < 300) {
       return response;
     } else {

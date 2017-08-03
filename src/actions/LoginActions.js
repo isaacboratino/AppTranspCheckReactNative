@@ -1,8 +1,8 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import * as ActionTypes from './ActionTypes';
-import { URLsConfig } from '../configs';
-import { ConnectAPI } from '../concerns';
+import { URLsConfig } from '../configs/URLsConfig';
+import ConnectAPI from '../concerns/ConnectAPI';
 
 export const loginUser = ({ user, password }) => {
 
@@ -10,7 +10,7 @@ export const loginUser = ({ user, password }) => {
 
     dispatch({ type: ActionTypes.LOGIN_USER });
 
-    ConnectAPI.post(URLsConfig.auth, {user:{user:user, password:password}});
+    new ConnectAPI().post(URLsConfig.auth, {user:{user:user, password:password}});
 
     console.log(user == 'admin' && password == 'admin');
 
