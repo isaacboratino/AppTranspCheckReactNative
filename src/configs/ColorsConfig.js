@@ -25,6 +25,11 @@ export const ColorsConfig = {
   title: {
     text: '#1EAD1E'
   },
+  transportContainer: {
+    buttonAdd: {
+      background: '#0040FF',
+    }
+  }
 }
 
 /*

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from './../actions';
 import {View} from 'react-native';
-import {Input, InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components';
+import {InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components';
 
 class LoginContainer extends Component {
 
@@ -84,7 +84,7 @@ const styles = {
     paddingHorizontal: 16,
     paddingVertical: 16,
     paddingTop: 20,
-    
+
   }
 };
 

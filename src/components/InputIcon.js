@@ -2,7 +2,7 @@ import React from 'react';
 import ReactNative, { TextInput, View, Text, Image } from 'react-native';
 import { ColorsConfig } from './../configs';
 
-const InputIcon = ({ label, value, onChangeText, placeholder, secureTextEntry, icon }) => {
+const InputIcon = ({ label, value, onChangeText, placeholder, secureTextEntry, icon, isEditable}) => {
 
   const {inputStyle, labelStyle, containerStyle, textContainerStyle, imageStyle} = styles;
 
@@ -20,6 +20,7 @@ const InputIcon = ({ label, value, onChangeText, placeholder, secureTextEntry, i
           style={inputStyle}
           value={value}
           onChangeText={onChangeText}
+          editable={isEditable}
         />
       </View>
 
