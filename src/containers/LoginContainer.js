@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from './../actions';
-import {View} from 'react-native';
+import {View} from 'react-native'
+import Ink from './../components/Ink';
 import {InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components';
 
 class LoginContainer extends Component {
@@ -66,6 +67,10 @@ class LoginContainer extends Component {
           <Title>
             {this.props.error}
           </Title>
+
+          <CardSection>
+            <Ink />
+          </CardSection>
 
           <CardSection>
             {this.renderButton()}

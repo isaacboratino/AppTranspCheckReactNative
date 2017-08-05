@@ -37,8 +37,7 @@ const styles = {
     borderWidth: 1,
     borderColor: ColorsConfig.button.border,
     marginTop: 16,
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingVertical: 16
   },
   textStyle: {
     color: ColorsConfig.button.text,
@@ -47,13 +46,13 @@ const styles = {
   },
   iconLeft: {
     width:40,
-    height:30,
-    marginHorizontal: 10
+    height:20,
+    marginHorizontal: 5
   },
   iconRight: {
     width:40,
-    height:30,
-    marginHorizontal: 10,
+    height:20,
+    marginHorizontal: 5,
   }
 };
 

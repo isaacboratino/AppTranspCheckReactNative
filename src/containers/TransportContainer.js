@@ -6,7 +6,7 @@ import { ColorsConfig } from './../configs';
 
 class TransportContainer extends Component {
 
-  state = { user: '', password: '', error: '', isModalCanhotoVisible: false,
+  state = { error: '', isModalCanhotoVisible: false,
             loading: false, path: require('../../images/icon_person.png') };
 
   openModal() {
@@ -25,9 +25,9 @@ class TransportContainer extends Component {
 
        let pathFile = data.path.toString().replace('file://','')
 
-       this.setState({path: require(pathFile)});
+       this.setState({path: { uri : pathFile }});
 
-       closeModal();
+       this.closeModal();
 
      })
      .catch(err => console.error(err));
@@ -49,7 +49,6 @@ class TransportContainer extends Component {
                 icon={require('../../images/icon_maps_pointer.png')}
                 placeholder='Endereco Origem'
                 label='Endereco Origem'
-                value={this.state.user}
                 isEditable={false}
               />
             </CardSection>
@@ -59,7 +58,6 @@ class TransportContainer extends Component {
                   icon={require('../../images/icon_maps_pointer.png')}
                   placeholder='Endereco Destino'
                   label='Endereco Destino'
-                  value={this.state.password}
                   isEditable={false}
                 />
             </CardSection>
@@ -67,7 +65,7 @@ class TransportContainer extends Component {
             <Card style={styles.card}>
               <CardSection style={styles.cardSection}>
                 <Image source={this.state.path}
-                  style={styles.caption}
+                  style={styles.thumbnail}
                   resizeMode='contain' />
               </CardSection>
               <CardSection style={styles.cardSection}>
@@ -80,7 +78,7 @@ class TransportContainer extends Component {
             <Card style={styles.card}>
               <CardSection style={styles.cardSection}>
                 <Image source={this.state.path}
-                  style={styles.caption}
+                  style={styles.thumbnail}
                   resizeMode='contain' />
               </CardSection>
               <CardSection style={styles.cardSection}>
@@ -102,16 +100,21 @@ class TransportContainer extends Component {
             visible={this.state.isModalCanhotoVisible}
             onRequestClose={() => {alert("Modal has been closed.")}}>
 
-           <View style={styles.modalContainer}>
+           <View style={styles.modal.content}>
              <Camera
                   ref={(cam) => { this.camera = cam; }}
                   style={styles.cameraPreview}
                   visible={this.state.isModalCanhotoVisible}
-                  aspect={Camera.constants.Aspect.fill}>
+                  aspect={Camera.constants.Aspect.fill}></Camera>
 
-                  <Button onPress={this.takePicture.bind(this)}>CAPTURAR</Button>
+              <View style={styles.modal.bottomToolbar}>
+                <Button onPress={this.takePicture.bind(this)}
+                  style={styles.buttonCaptureCancel}>CANCELAR</Button>
 
-              </Camera>
+                <Button onPress={this.takePicture.bind(this)}
+                  style={styles.buttonCaptureCancel}>CAPTURAR</Button>
+              </View>
+
            </View>
 
         </Modal>
@@ -126,31 +129,38 @@ const styles = {
     flex:1,
   },
   scrollStyle: {
+    flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 16,
     marginVertical: 16,
     paddingTop: ReactNative.Platform.OS === 'ios' ? 20 : 0,
-    flex: 1
   },
-  modalContainer: {
+  modal: {
+    content: {
+      flex: 1,
+      marginTop: ReactNative.Platform.OS === 'ios' ? 20 : 0,
+      backgroundColor: '#AAA00A',
+    },
+    bottomToolbar: {
+      flex: 1,
+      height: 60,
+      padding: 16,
+      flexDirection: 'row',
+      backgroundColor: '#AAAAAA',
+    }
+  },
+  buttonCaptureCancel: {
     flex:1,
-    flexDirection: 'column',
-    marginTop: ReactNative.Platform.OS === 'ios' ? 20 : 0,
-    backgroundColor: '#AAAAAA',
-
+    backgroundColor: ColorsConfig.transportContainer.buttonAdd.background,
   },
   cameraPreview: {
-   flex:3,
-   alignItems: 'center',
-   height: Dimensions.get('window').height,
-   width: Dimensions.get('window').width ,
-   backgroundColor: '#333333'
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#333333'
  },
  buttonAdd: {
-   flex: 1,
-   alignSelf: 'center',
-   height: 100,
-   borderRadius: 30,
    backgroundColor: ColorsConfig.transportContainer.buttonAdd.background,
    padding: 0,
    margin: 0
@@ -164,7 +174,7 @@ const styles = {
    padding: 0,
    margin: 0,
  },
- caption: {
+ thumbnail: {
    padding: 0,
    margin: 0,
    flex: 1,
