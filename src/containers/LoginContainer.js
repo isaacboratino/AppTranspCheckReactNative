@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loginUser} from './../actions';
-import {View} from 'react-native'
+import {View, ScrollView} from 'react-native'
 import Ink from './../components/Ink';
 import {InputIcon, Card, CardSection, Button, Title, Spinner, Header} from './../components';
 
@@ -16,6 +16,7 @@ class LoginContainer extends Component {
   }
 
   onEntrarClick() {
+    this.props.loading = true;
     const {user, password} = this.props;
     this.props.loginUser({user, password});
   }
@@ -36,7 +37,7 @@ class LoginContainer extends Component {
 
       <View>
         <Header headerText="Transp Check" />
-        <View style={styles.containerStyle}>
+        <ScrollView style={styles.containerStyle}>
 
         <Card>
           <CardSection>
@@ -69,16 +70,12 @@ class LoginContainer extends Component {
           </Title>
 
           <CardSection>
-            <Ink />
-          </CardSection>
-
-          <CardSection>
             {this.renderButton()}
           </CardSection>
 
         </Card>
 
-      </View>
+      </ScrollView>
     </View>
     );
   }

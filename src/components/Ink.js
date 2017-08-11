@@ -5,6 +5,8 @@ import {
     TouchableHighlight
 } from 'react-native';
 import SketchView from 'react-native-sketch-view';
+import { ButtonCircle } from './../components';
+import { ColorsConfig } from './../configs';
 
 const sketchViewConstants = SketchView.constants;
 
@@ -46,38 +48,62 @@ class Ink extends Component {
         this.props.onSave && this.props.onSave(saveEvent);
     }
 
+    onClose(closeEvent) {
+      this.props.onClose && this.props.onClose(closeEvent);
+    }
+
     render() {
         return (
-            <View style={{flex: 1, flexDirection: 'column', height: 200}}>
+            <View style={styles.inkContainer}>
 
-                <SketchView style={{flex: 1, backgroundColor: 'green'}}
+                <SketchView style={styles.ink}
                   ref="sketchRef"
                   selectedTool={this.state.toolSelected}
                   onSaveSketch={this.onSketchSave.bind(this)}
                   localSourceImagePath={this.props.localSourceImagePath}/>
 
-                <View style={{ flexDirection: 'row', backgroundColor: '#EEE'}}>
-                    <TouchableHighlight underlayColor={"#CCC"}
-                      style={{ flex: 1, alignItems: 'center', paddingVertical:20 }}
-                      onPress={() => { this.refs.sketchRef.clearSketch() }}>
-                        <Text style={{color:'#888',fontWeight:'600'}}>CLEAR</Text>
-                    </TouchableHighlight>
+                <View style={styles.toolbarContainer}>
 
-                    <TouchableHighlight underlayColor={"#CCC"}
-                      style={{ flex: 1, alignItems: 'center', paddingVertical:20, borderLeftWidth:1, borderRightWidth:1, borderColor:'#DDD' }}
-                      onPress={() => { this.refs.sketchRef.saveSketch() }}>
-                        <Text style={{color:'#888',fontWeight:'600'}}>SAVE</Text>
-                    </TouchableHighlight>
+                  <ButtonCircle style={styles.buttonClose}
+                    onPress={() => { this.onClose().bind(this) }}>FECHAR</ButtonCircle>
 
-                    <TouchableHighlight underlayColor={"#CCC"}
-                      style={{ flex: 1, justifyContent:'center', alignItems: 'center', backgroundColor:this.isEraserToolSelected() ? "#CCC" : "rgba(0,0,0,0)" }}
-                      onPress={this.toolChangeClick.bind(this)}>
-                        <Text style={{color:'#888',fontWeight:'600'}}>ERASER</Text>
-                    </TouchableHighlight>
+                  <ButtonCircle style={styles.buttonClean}
+                    onPress={() => { this.refs.sketchRef.clearSketch() }}>NOVO</ButtonCircle>
+
+                  <ButtonCircle style={styles.buttonCapture}
+                    onPress={() => { this.refs.sketchRef.saveSketch() }}>OK</ButtonCircle>
+
                 </View>
             </View>
+
         );
     }
+}
+
+const styles = {
+  inkContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    height: 200,
+  },
+  ink: {
+    flex: 1,
+  },
+  toolbarContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    margin: 16
+  },
+  buttonClose: {
+      backgroundColor: ColorsConfig.ink.buttonClose,
+  },
+  buttonClean: {
+      backgroundColor: ColorsConfig.ink.buttonClean,
+  },
+  buttonCapture: {
+      backgroundColor: ColorsConfig.ink.buttonCapture,
+  },
 }
 
 export default Ink;

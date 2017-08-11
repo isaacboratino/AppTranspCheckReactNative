@@ -29,6 +29,11 @@ export const ColorsConfig = {
     buttonAdd: {
       background: '#0040FF',
     }
+  },
+  ink: {
+    buttonClose:'#0040FF',
+    buttonClean:'#0040FF',
+    buttonCapture:'#1EAD1E'
   }
 }
 

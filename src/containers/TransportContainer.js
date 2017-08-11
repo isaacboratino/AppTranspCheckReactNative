@@ -1,20 +1,54 @@
 import React, {Component} from 'react';
-import ReactNative, {Modal, View, ScrollView, Text, Dimensions, Image} from 'react-native';
 import Camera from 'react-native-camera';
-import {InputIcon, Card, CardSection, Button, Title, Header} from './../components';
+import Orientation from 'react-native-orientation';
+import ReactNative, {
+  Modal,
+  View,
+  ScrollView,
+  Text,
+  Dimensions,
+  Image
+} from 'react-native';
+
+import {
+  InputIcon,
+  Card,
+  CardSection,
+  Button,
+  Title,
+  Header
+} from './../components';
+
+import Ink from './../components/Ink';
 import { ColorsConfig } from './../configs';
 
 class TransportContainer extends Component {
 
-  state = { error: '', isModalCanhotoVisible: false,
-            loading: false, path: require('../../images/icon_person.png') };
+  state = {
+    error: '',
+    isModalCanhotoVisible: false,
+    isModalAssinaturaVisible: false,
+    loading: false,
+    imageCanhoto: require('../../images/icon_person.png'),
+    imageAssinatura: require('../../images/icon_person.png'),
+  };
 
-  openModal() {
-    this.setState({isModalCanhotoVisible:true});
+  componentWillMount() {
+    Orientation.getInitialOrientation();
   }
 
-  closeModal() {
-    this.setState({isModalCanhotoVisible:false});
+  toggleModalCanhoto() {
+    this.setState({isModalCanhotoVisible: !this.state.isModalCanhotoVisible});
+  }
+
+  abrirModalAssinatura() {
+    this.setState({isModalAssinaturaVisible: true});
+    Orientation.lockToLandscape();
+  }
+
+  fecharModalAssinatura() {
+    this.setState({isModalAssinaturaVisible: false});
+    Orientation.lockToPortrait();
   }
 
   takePicture() {
@@ -25,13 +59,22 @@ class TransportContainer extends Component {
 
        let pathFile = data.path.toString().replace('file://','')
 
-       this.setState({path: { uri : pathFile }});
+       this.setState({imageCanhoto: { uri : pathFile }});
 
        this.closeModal();
 
-     })
-     .catch(err => console.error(err));
+     }).catch(err => console.error(err));
  }
+
+  onGetAssign(data) {
+    console.log(data);
+    this.setState({imageAssinatura: { uri : data.localFilePath }});
+    this.fecharModalAssinatura();
+  }
+
+  onCloseModalAssign() {
+    this.fecharModalAssinatura();
+  }
 
   render() {
     return (
@@ -63,28 +106,35 @@ class TransportContainer extends Component {
             </CardSection>
 
             <Card style={styles.card}>
+
               <CardSection style={styles.cardSection}>
-                <Image source={this.state.path}
+                <Image source={this.state.imageCanhoto}
                   style={styles.thumbnail}
                   resizeMode='contain' />
               </CardSection>
+
               <CardSection style={styles.cardSection}>
                 <Button style={styles.buttonAdd}
-                  onPress={this.openModal.bind(this)}
+                  onPress={this.toggleModalCanhoto.bind(this)}
                   iconRight={require('../../images/icon_add_photo_white.png')}>CANHOTO</Button>
               </CardSection>
+
             </Card>
 
             <Card style={styles.card}>
+
               <CardSection style={styles.cardSection}>
-                <Image source={this.state.path}
+                <Image source={this.state.imageAssinatura}
                   style={styles.thumbnail}
                   resizeMode='contain' />
               </CardSection>
+
               <CardSection style={styles.cardSection}>
                 <Button style={styles.buttonAdd}
-                    iconRight={require('../../images/icon_add_photo_white.png')}>ASSINATURA</Button>
+                  onPress={this.abrirModalAssinatura.bind(this)}
+                  iconRight={require('../../images/icon_ink.png')}>ASSINATURA</Button>
               </CardSection>
+
             </Card>
 
             <CardSection>
@@ -115,6 +165,18 @@ class TransportContainer extends Component {
                   style={styles.buttonCaptureCancel}>CAPTURAR</Button>
               </View>
 
+           </View>
+        </Modal>
+
+        <Modal
+            animationType={'slide'}
+            transparent={false}
+            visible={this.state.isModalAssinaturaVisible}
+            onRequestClose={() => {alert("Modal has been closed.")}}>
+
+           <View style={styles.modal.content}>
+             <Ink onSave={this.onGetAssign.bind(this)}
+                  onClose={this.onCloseModalAssign.bind(this)}/>
            </View>
 
         </Modal>
@@ -179,6 +241,8 @@ const styles = {
    margin: 0,
    flex: 1,
    alignSelf: 'stretch',
+   width: 100,
+   height: 100
  },
 };
 

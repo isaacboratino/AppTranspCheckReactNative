@@ -22,7 +22,7 @@ const styles = {
     backgroundColor: ColorsConfig.header.background,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: 45,
+    height: 60,
     marginTop: ReactNative.Platform.OS === 'ios' ? 20 : 0,
     shadowColor: ColorsConfig.header.shadow,
     shadowOffset: { width: 0, height: 2 },
