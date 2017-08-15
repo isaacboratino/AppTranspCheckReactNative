@@ -3,6 +3,7 @@ package com.apptranspcheckreactnative;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNSketchViewPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.reactlibrary.RNSketchViewPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSketchViewPackage(),
             new OrientationPackage(),
             new RNSketchViewPackage(),
             new RCTCameraPackage()
